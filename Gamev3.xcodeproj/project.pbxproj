@@ -14,6 +14,7 @@
 		23F0F448208752D7008E74CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F0F446208752D7008E74CF /* LaunchScreen.storyboard */; };
 		23F0F453208752D7008E74CF /* Gamev3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F0F452208752D7008E74CF /* Gamev3Tests.swift */; };
 		23F0F45E208752D7008E74CF /* Gamev3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F0F45D208752D7008E74CF /* Gamev3UITests.swift */; };
+		23F0F46C20875A9A008E74CF /* ShipMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F0F46B20875A9A008E74CF /* ShipMovement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		23F0F459208752D7008E74CF /* Gamev3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Gamev3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F0F45D208752D7008E74CF /* Gamev3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamev3UITests.swift; sourceTree = "<group>"; };
 		23F0F45F208752D7008E74CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F0F46B20875A9A008E74CF /* ShipMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipMovement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				23F0F43D208752D7008E74CF /* AppDelegate.swift */,
+				23F0F46B20875A9A008E74CF /* ShipMovement.swift */,
 				23F0F43F208752D7008E74CF /* ViewController.swift */,
 				23F0F441208752D7008E74CF /* Main.storyboard */,
 				23F0F444208752D7008E74CF /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F0F440208752D7008E74CF /* ViewController.swift in Sources */,
+				23F0F46C20875A9A008E74CF /* ShipMovement.swift in Sources */,
 				23F0F43E208752D7008E74CF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +520,7 @@
 				23F0F464208752D7008E74CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		23F0F465208752D7008E74CF /* Build configuration list for PBXNativeTarget "Gamev3Tests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +529,7 @@
 				23F0F467208752D7008E74CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		23F0F468208752D7008E74CF /* Build configuration list for PBXNativeTarget "Gamev3UITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +538,7 @@
 				23F0F46A208752D7008E74CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
