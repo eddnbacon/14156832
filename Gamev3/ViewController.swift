@@ -41,7 +41,8 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         hitboxTimer()
         hitboxSpawn()
         
-        
+        gameTimer()
+        gameLength()
         
         shipImage.shipDel = self
       
@@ -125,12 +126,15 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     
     
     func gameTimer(){
-        timer = Timer.scheduledTimer(timeInterval:0.1, target: self, selector: #selector(ViewController.gameLength),userInfo:nil, repeats: true )    }
+        timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(ViewController.gameLength),userInfo:nil, repeats: true )    }
     
     func gameLength(){
-        number = 20 - 1
-        if number == 0{
-            present
+        number = number + 1
+        score.text = String(number)
+        
+        if number == 5{
+            
+            present( UIStoryboard(name: "MenuScreen", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as UIViewController, animated: true, completion: nil)
         }
     }
     
