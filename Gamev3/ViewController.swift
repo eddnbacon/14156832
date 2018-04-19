@@ -29,6 +29,7 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     var collision:UICollisionBehavior!
     var itemBehavior:UIDynamicItemBehavior!
     var meteor = UIImageView(image:nil)
+    var meteor2 = UIImageView(image:nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +65,8 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     }
     
     func meteorTimer(){
-        timer = Timer.scheduledTimer(timeInterval:1.5, target: self, selector: #selector(ViewController.meteorFalling),userInfo:nil, repeats: true )
-        
+        timer = Timer.scheduledTimer(timeInterval:3, target: self, selector: #selector(ViewController.meteorFalling),userInfo:nil, repeats: true )
+        collision.removeAllBoundaries()
     }
     
     
@@ -75,19 +76,25 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         
         
         meteor.image = UIImage(named:"Meteor \(num)")
-        meteor.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:50, width:50, height: 50)
+        meteor.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:-50, width:50, height: 50)
 
         self.view.addSubview(meteor)
         
+        meteor2.image = UIImage(named:"Meteor \(num)")
+        meteor2.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:-70, width:50, height: 50)
+        
+        self.view.addSubview(meteor2)
+        
+        
         animator = UIDynamicAnimator(referenceView: self.view)
-        gravity = UIGravityBehavior(items: [meteor])
-        gravity.magnitude = 0.7
+        gravity = UIGravityBehavior(items: [meteor, meteor2])
+        gravity.magnitude = 0.5
         animator.addBehavior(gravity)
-        collision = UICollisionBehavior(items: [meteor])
+        collision = UICollisionBehavior(items: [meteor, meteor2])
         animator.addBehavior(collision)
         collision.collisionDelegate = self
         
-        itemBehavior = UIDynamicItemBehavior(items:[meteor])
+        itemBehavior = UIDynamicItemBehavior(items:[meteor, meteor2])
         itemBehavior.elasticity = 0.6
         animator.addBehavior(itemBehavior)
         
@@ -98,12 +105,12 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     
     func hitboxTimer(){
         timer = Timer.scheduledTimer(timeInterval:0.1, target: self, selector: #selector(ViewController.hitboxSpawn),userInfo:nil, repeats: true )
-        collision.removeAllBoundaries()
+        
     }
     
     func hitboxSpawn(){
-        let barrier = UIView(frame: CGRect(x: shipImage.center.x-30, y: shipImage.center.y-30, width:60, height: 60))
-        barrier.backgroundColor = UIColor.red
+        let barrier = UIView(frame: CGRect(x: shipImage.center.x-25, y: shipImage.center.y-50, width:50, height: 100))
+        //barrier.backgroundColor = UIColor.red
         view.addSubview(barrier)
         self.view.bringSubview(toFront: shipImage)
         
@@ -111,12 +118,6 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         collision.addBoundary(withIdentifier: "barrier" as NSCopying, for: UIBezierPath(rect: barrier.frame))
         animator.addBehavior(collision)
         collision.collisionDelegate = self
-        //collision.removeAllBoundaries()
-        
-//        gravity = UIGravityBehavior(items: [barrier])
-//        animator.addBehavior(gravity)
-        
-        
       
     }
     
