@@ -30,6 +30,7 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     var itemBehavior:UIDynamicItemBehavior!
     var meteor = UIImageView(image:nil)
     var meteor2 = UIImageView(image:nil)
+    var number = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +75,6 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         
         let num = Int(randomNrGen(firstNum: 1, secondNum: 4))
         
-        
         meteor.image = UIImage(named:"Meteor \(num)")
         meteor.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:-50, width:50, height: 50)
 
@@ -84,7 +84,6 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         meteor2.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:-70, width:50, height: 50)
         
         self.view.addSubview(meteor2)
-        
         
         animator = UIDynamicAnimator(referenceView: self.view)
         gravity = UIGravityBehavior(items: [meteor, meteor2])
@@ -97,9 +96,6 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         itemBehavior = UIDynamicItemBehavior(items:[meteor, meteor2])
         itemBehavior.elasticity = 0.6
         animator.addBehavior(itemBehavior)
-        
-        
-      
         
     }
     
@@ -118,11 +114,26 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         collision.addBoundary(withIdentifier: "barrier" as NSCopying, for: UIBezierPath(rect: barrier.frame))
         animator.addBehavior(collision)
         collision.collisionDelegate = self
+        
+        if(barrier.frame.intersects(meteor.frame)){
+            
+        }else if(barrier.frame.intersects(meteor2.frame)){
+            
+        }
       
     }
     
     
-
+    func gameTimer(){
+        timer = Timer.scheduledTimer(timeInterval:0.1, target: self, selector: #selector(ViewController.gameLength),userInfo:nil, repeats: true )    }
+    
+    func gameLength(){
+        number = 20 - 1
+        if number == 0{
+            present
+        }
+    }
+    
     func randomNrGen (firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs (firstNum - secondNum) + min(firstNum,secondNum);
     }
