@@ -10,6 +10,11 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    
+    @IBAction func StartGame(_ sender: UIButton) {
+        present( UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainstory") as UIViewController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
