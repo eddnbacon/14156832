@@ -51,19 +51,19 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         shipImage.shipDel = self
       
     }
-    //Background Animation loop
-    func bgAnimation(){
+    
+    override func viewDidAppear(_ animated: Bool) {
         UIView.animate(withDuration: 5, delay:0.0, options:[UIViewAnimationOptions.repeat, .curveLinear], animations: {
-            
             self.bgImage1.center.y += self.view.bounds.height
             self.bgImage2.center.y += self.view.bounds.height
-            
         })
     }
+    //Background Animation loop
+    func bgAnimation(){
+            }
     
     func meteorTimer(){
         timer = Timer.scheduledTimer(timeInterval:3, target: self, selector: #selector(ViewController.meteorFalling),userInfo:nil, repeats: true )
-        
     }
 
     func meteorFalling(){
@@ -72,12 +72,12 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         
         meteor.image = UIImage(named:"Meteor \(num)")
         meteor.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:randomNrGen(firstNum: -40, secondNum: -500), width:50, height: 50)
-        
+        self.meteor.alpha = 1
         self.view.addSubview(meteor)
         
         meteor2.image = UIImage(named:"Meteor \(num)")
         meteor2.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:-70, width:50, height: 50)
-        
+        self.meteor2.alpha = 1
         self.view.addSubview(meteor2)
         
         animator = UIDynamicAnimator(referenceView: self.view)
@@ -87,49 +87,51 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         collision = UICollisionBehavior(items: [meteor, meteor2])
         animator.addBehavior(collision)
         collision.collisionDelegate = self
-        
     }
     
     func hitboxTimer(){
         timer = Timer.scheduledTimer(timeInterval:0.1, target: self, selector: #selector(ViewController.hitboxSpawn),userInfo:nil, repeats: true )
-        
-        
     }
     
     func hitboxSpawn(){
         collision.removeAllBoundaries()
         
-        let barrier = UIView(frame: CGRect(x: shipImage.center.x-25, y: shipImage.center.y-50, width:50, height: 100))
+        let hitbox = UIView(frame: CGRect(x: shipImage.center.x-25, y: shipImage.center.y-50, width:50, height: 105))
         //barrier.backgroundColor = UIColor.red
         //view.addSubview(barrier)
         //self.view.bringSubview(toFront: shipImage)
         
-        collision.addBoundary(withIdentifier: "barrier" as NSCopying, for: UIBezierPath(rect: barrier.frame))
+        collision.addBoundary(withIdentifier: "hitbox" as NSCopying, for: UIBezierPath(rect: hitbox.frame))
         animator.addBehavior(collision)
         collision.collisionDelegate = self
         
-        if(barrier.frame.intersects(meteor.frame)) || (barrier.frame.intersects(meteor2.frame)){
-            gameScore = gameScore - 50
+        if(hitbox.frame.intersects(meteor.frame)) || (hitbox.frame.intersects(meteor2.frame)){
+            gameScore = gameScore - 10
             score.text = String(gameScore)
+            UIView.animate(withDuration: 1, delay:0.0, options:[UIViewAnimationOptions.curveEaseIn, .curveLinear], animations: {
+                self.meteor.alpha = 0
+            })
+            UIView.animate(withDuration: 1, delay:0.0, options:[UIViewAnimationOptions.curveEaseIn, .curveLinear], animations: {
+                self.meteor2.alpha = 0
+            })
         }
-        
     }
-
+    
     func gameScoreTimer(){
         timer = Timer.scheduledTimer(timeInterval:0.5, target: self, selector: #selector(ViewController.gameScorefn),userInfo:nil, repeats: true )
     }
     
     func gameScorefn(){
-        
         let meteory = meteor.convert(meteor.center, to:self.view)
         let meteor2y = meteor2.convert(meteor.center, to:self.view)
         
         let shipy = shipImage.convert(meteor.center, to:self.view)
+        
         if 	meteory.y >= shipy.y{
             gameScore = gameScore + 10
             score.text = String(gameScore)
         }
-        
+
         if 	meteor2y.y >= shipy.y{
             gameScore = gameScore + 10
             score.text = String(gameScore)
@@ -137,26 +139,23 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     }
     
     func gameTimer(){
-        timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(ViewController.gameLength),userInfo:nil, repeats: true )    }
+        timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(ViewController.gameLength),userInfo:nil, repeats: true )
+    }
 
     func gameLength(){
         number = number - 1
-        
         timerLB.text = String(number)
-        
         if number == 0{
             let menuStoryboard = UIStoryboard(name: "MenuScreen", bundle: Bundle.main)
             let vc : MenuViewController=menuStoryboard.instantiateViewController(withIdentifier: "menustory") as! MenuViewController
-            
+            timer.invalidate()
             self.present(vc, animated: true, completion: nil)
         }
-        
     }
     
     func randomNrGen (firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs (firstNum - secondNum) + min(firstNum,secondNum);
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
