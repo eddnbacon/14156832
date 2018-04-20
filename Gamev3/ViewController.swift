@@ -30,7 +30,7 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     var itemBehavior:UIDynamicItemBehavior!
     var meteor = UIImageView(image:nil)
     var meteor2 = UIImageView(image:nil)
-    var number = Int(10)
+    var number = Int(20)
     
     func changeShipMovement(){
     }
@@ -49,7 +49,7 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 5, delay:0.0, options:[UIViewAnimationOptions.repeat, .curveLinear], animations: {
+        UIView.animate(withDuration: 10, delay:0.0, options:[UIViewAnimationOptions.repeat, .curveLinear], animations: {
             self.bgImage1.center.y += self.view.bounds.height
             self.bgImage2.center.y += self.view.bounds.height
         })
@@ -68,12 +68,12 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         
         meteor.image = UIImage(named:"Meteor \(num)")
         meteor.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:randomNrGen(firstNum: -40, secondNum: -500), width:50, height: 50)
-        self.meteor.alpha = 1
+        
         self.view.addSubview(meteor)
         
         meteor2.image = UIImage(named:"Meteor \(num)")
         meteor2.frame = CGRect(x:randomNrGen(firstNum: 5, secondNum: 300), y:-70, width:50, height: 50)
-        self.meteor2.alpha = 1
+       
         self.view.addSubview(meteor2)
         
         animator = UIDynamicAnimator(referenceView: self.view)
@@ -104,12 +104,6 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         if(hitbox.frame.intersects(meteor.frame)) || (hitbox.frame.intersects(meteor2.frame)){
             gameScore = gameScore - 10
             score.text = String(gameScore)
-            UIView.animate(withDuration: 1, delay:0.0, options:[UIViewAnimationOptions.curveEaseIn, .curveLinear], animations: {
-                self.meteor.alpha = 0
-            })
-            UIView.animate(withDuration: 1, delay:0.0, options:[UIViewAnimationOptions.curveEaseIn, .curveLinear], animations: {
-                self.meteor2.alpha = 0
-            })
         }
     }
     
