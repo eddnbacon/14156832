@@ -14,8 +14,8 @@
             <objects>
                 <viewController storyboardIdentifier="mainstory" id="BYZ-38-t0r" customClass="ViewController" customModule="Gamev3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="9Ep-q6-Pqp"/>
+                        <viewControllerLayoutGuide type="bottom" id="jT0-k3-he1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -23,15 +23,11 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SpaceBG" translatesAutoresizingMaskIntoConstraints="NO" id="O3p-Ts-XcT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SpaceBG2" translatesAutoresizingMaskIntoConstraints="NO" id="Rqg-DL-IsM">
-                                <rect key="frame" x="0.0" y="-666" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ShipImage" translatesAutoresizingMaskIntoConstraints="NO" id="ao7-f5-fp2" customClass="ShipMovement" customModule="Gamev3" customModuleProvider="target">
-                                <rect key="frame" x="137" y="530" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="-667" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlb-PK-N3E">
                                 <rect key="frame" x="64" y="9" width="42" height="21"/>
@@ -61,6 +57,10 @@
                                 <color key="textColor" red="1" green="0.041349415590000001" blue="0.1045855403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ShipImage" translatesAutoresizingMaskIntoConstraints="NO" id="ao7-f5-fp2" customClass="ShipMovement" customModule="Gamev3" customModuleProvider="target">
+                                <rect key="frame" x="137" y="410" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="45.600000000000001" y="49.925037481259373"/>
+            <point key="canvasLocation" x="112.8" y="63.418290854572717"/>
         </scene>
     </scenes>
     <resources>

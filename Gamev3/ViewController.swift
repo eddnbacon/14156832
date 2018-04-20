@@ -12,6 +12,8 @@ protocol shipDelegate {
 }
 
 var gameScore = Int()
+let w = UIScreen.main.bounds.width
+let H = UIScreen.main.bounds.height
 
 class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegate{
     
@@ -28,8 +30,7 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     var itemBehavior:UIDynamicItemBehavior!
     var meteor = UIImageView(image:nil)
     var meteor2 = UIImageView(image:nil)
-    var number = Int(20)
-    
+    var number = Int(10)
     
     func changeShipMovement(){
     }
@@ -39,17 +40,12 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         bgAnimation()
         meteorFalling()
         meteorTimer()
-        
         hitboxTimer()
         hitboxSpawn()
-        
         gameTimer()
         gameLength()
-        
         gameScoreTimer()
-        
         shipImage.shipDel = self
-      
     }
     
     override func viewDidAppear(_ animated: Bool) {
