@@ -11,6 +11,7 @@ protocol shipDelegate {
     func changeShipMovement()
 }
 
+var gameScore = Int()
 
 class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegate{
     
@@ -28,7 +29,7 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
     var meteor = UIImageView(image:nil)
     var meteor2 = UIImageView(image:nil)
     var number = Int(20)
-    var gameScore = Int()
+    
     
     func changeShipMovement(){
     }
@@ -87,10 +88,6 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         animator.addBehavior(collision)
         collision.collisionDelegate = self
         
-//        itemBehavior = UIDynamicItemBehavior(items:[meteor, meteor2])
-//        itemBehavior.elasticity = 0.4
-//        animator.addBehavior(itemBehavior)
-        
     }
     
     func hitboxTimer(){
@@ -148,7 +145,10 @@ class ViewController: UIViewController, shipDelegate, UICollisionBehaviorDelegat
         timerLB.text = String(number)
         
         if number == 0{
-            present( UIStoryboard(name: "MenuScreen", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as UIViewController, animated: true, completion: nil)
+            let menuStoryboard = UIStoryboard(name: "MenuScreen", bundle: Bundle.main)
+            let vc : MenuViewController=menuStoryboard.instantiateViewController(withIdentifier: "menustory") as! MenuViewController
+            
+            self.present(vc, animated: true, completion: nil)
         }
         
     }

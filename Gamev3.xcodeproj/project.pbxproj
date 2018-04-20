@@ -107,11 +107,11 @@
 				8706FBA42088B17D001F2E70 /* ShipMovement.swift */,
 				23F0F43F208752D7008E74CF /* ViewController.swift */,
 				8706FBAA2088C109001F2E70 /* MenuViewController.swift */,
+				872D08C72088C4600055463C /* MenuScreen.storyboard */,
 				23F0F441208752D7008E74CF /* Main.storyboard */,
 				23F0F444208752D7008E74CF /* Assets.xcassets */,
 				23F0F446208752D7008E74CF /* LaunchScreen.storyboard */,
 				23F0F449208752D7008E74CF /* Info.plist */,
-				872D08C72088C4600055463C /* MenuScreen.storyboard */,
 			);
 			path = Gamev3;
 			sourceTree = "<group>";

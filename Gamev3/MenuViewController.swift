@@ -10,14 +10,26 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    
-    @IBAction func StartGame(_ sender: UIButton) {
-        present( UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainstory") as UIViewController, animated: true, completion: nil)
+    @IBAction func play(_ sender: UIButton) {
+        
+        
+        //self.dismiss(animated: true, completion:nil)
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc : ViewController=mainStoryboard.instantiateViewController(withIdentifier: "mainstory") as! ViewController
+        gameScore = 0
+        self.present(vc, animated: true, completion: nil)
+        
+        
     }
+
+    @IBOutlet weak var lastScore: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        lastScore.text = String(gameScore)
+        
         // Do any additional setup after loading the view.
     }
 
